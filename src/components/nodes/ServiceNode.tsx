@@ -14,12 +14,12 @@ const ServiceNode = memo(({ data }: NodeProps<ServiceNodeData>) => {
     return (
         <div
             className={`
-        relative px-4 py-3 min-w-[180px]
+        relative px-3 py-2 min-w-[140px]
         ${isModern
-                    ? 'bg-white rounded-xl border border-gray-200 shadow-lg shadow-gray-200/50'
+                    ? 'bg-white rounded-lg border border-gray-200 shadow-md shadow-gray-200/40'
                     : 'bg-white rounded-md border-2 border-gray-300'
                 }
-        transition-all duration-200 hover:shadow-xl
+        transition-all duration-200 hover:shadow-lg
       `}
         >
             {/* Handles */}
@@ -27,7 +27,7 @@ const ServiceNode = memo(({ data }: NodeProps<ServiceNodeData>) => {
                 type="target"
                 position={Position.Left}
                 className={`
-          w-3 h-3 border-2 
+          w-2 h-2 border-2 
           ${isModern
                         ? 'bg-white border-gray-300 hover:border-blue-500'
                         : 'bg-gray-200 border-gray-400'
@@ -38,7 +38,7 @@ const ServiceNode = memo(({ data }: NodeProps<ServiceNodeData>) => {
                 type="source"
                 position={Position.Right}
                 className={`
-          w-3 h-3 border-2 
+          w-2 h-2 border-2 
           ${isModern
                         ? 'bg-white border-gray-300 hover:border-blue-500'
                         : 'bg-gray-200 border-gray-400'
@@ -47,19 +47,19 @@ const ServiceNode = memo(({ data }: NodeProps<ServiceNodeData>) => {
             />
 
             {/* Content */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
                 {/* Icon */}
                 <div
                     className={`
             flex items-center justify-center flex-shrink-0
-            ${isModern ? 'w-10 h-10 rounded-lg' : 'w-8 h-8 rounded'}
+            ${isModern ? 'w-7 h-7 rounded-md' : 'w-6 h-6 rounded'}
           `}
                     style={{
                         backgroundColor: isModern ? `${color}15` : `${color}20`,
                     }}
                 >
                     <Icon
-                        size={isModern ? 24 : 20}
+                        size={isModern ? 16 : 14}
                         style={{ color }}
                     />
                 </div>
@@ -68,8 +68,8 @@ const ServiceNode = memo(({ data }: NodeProps<ServiceNodeData>) => {
                 <div className="flex flex-col min-w-0">
                     <span
                         className={`
-              font-semibold truncate
-              ${isModern ? 'text-gray-800 text-sm' : 'text-gray-700 text-xs'}
+              font-semibold truncate leading-tight
+              ${isModern ? 'text-gray-800 text-xs' : 'text-gray-700 text-[11px]'}
             `}
                     >
                         {label}
@@ -78,7 +78,7 @@ const ServiceNode = memo(({ data }: NodeProps<ServiceNodeData>) => {
                         <span
                             className={`
                 text-gray-500 truncate
-                ${isModern ? 'text-xs' : 'text-[10px]'}
+                ${isModern ? 'text-[10px]' : 'text-[9px]'}
               `}
                         >
                             {subtitle}
@@ -90,7 +90,7 @@ const ServiceNode = memo(({ data }: NodeProps<ServiceNodeData>) => {
             {/* Selection indicator */}
             <div
                 className={`
-          absolute inset-0 rounded-xl pointer-events-none
+          absolute inset-0 rounded-lg pointer-events-none
           transition-all duration-200
           ring-0 hover:ring-2 hover:ring-blue-400/50
         `}

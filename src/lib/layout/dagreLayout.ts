@@ -1,12 +1,12 @@
 import dagre from 'dagre';
-import { Node, Edge } from 'reactflow';
+import { Node, Edge, MarkerType } from 'reactflow';
 import { ParsedDiagram } from '@/types/diagram';
 import { ServiceNodeData, ClusterNodeData } from '@/types/diagram';
 
-// Node dimensions
-const NODE_WIDTH = 200;
-const NODE_HEIGHT = 80;
-const CLUSTER_PADDING = 40;
+// Node dimensions - compact for presentations
+const NODE_WIDTH = 160;
+const NODE_HEIGHT = 56;
+const CLUSTER_PADDING = 20;
 
 interface LayoutOptions {
     direction: 'TB' | 'LR' | 'BT' | 'RL';
@@ -26,8 +26,8 @@ export function applyDagreLayout(
 
     const layoutOptions: LayoutOptions = {
         direction: options?.direction || direction,
-        nodeSpacing: options?.nodeSpacing || 60,
-        rankSpacing: options?.rankSpacing || 100,
+        nodeSpacing: options?.nodeSpacing || 30,
+        rankSpacing: options?.rankSpacing || 50,
     };
 
     // Create dagre graph
@@ -36,8 +36,8 @@ export function applyDagreLayout(
         rankdir: layoutOptions.direction,
         nodesep: layoutOptions.nodeSpacing,
         ranksep: layoutOptions.rankSpacing,
-        marginx: 20,
-        marginy: 20,
+        marginx: 10,
+        marginy: 10,
     });
     g.setDefaultEdgeLabel(() => ({}));
 
@@ -94,7 +94,7 @@ export function applyDagreLayout(
         if (minX !== Infinity) {
             clusterBounds.set(subgraph.id, {
                 minX: minX - CLUSTER_PADDING,
-                minY: minY - CLUSTER_PADDING - 30, // Extra space for label
+                minY: minY - CLUSTER_PADDING - 20, // Extra space for label
                 maxX: maxX + CLUSTER_PADDING,
                 maxY: maxY + CLUSTER_PADDING,
             });
@@ -172,7 +172,7 @@ export function applyDagreLayout(
             fillOpacity: 0.8,
         },
         markerEnd: {
-            type: 'arrowclosed' as const,
+            type: MarkerType.ArrowClosed,
             color: theme === 'modern' ? '#94a3b8' : '#6b7280',
         },
     }));
